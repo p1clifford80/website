@@ -1,0 +1,141 @@
+<html>
+<head>
+
+<script language="JavaScript">
+
+var clipLength = [ 19, 8, 6, 8, 13, 7 ];
+
+
+var clipList = [ "sounds/clip1Jim.mp3", 
+                 "sounds/clip2Pam.mp3",
+				 "sounds/clip3Michael.mp3",
+				 "sounds/clip4Creed.mp3",
+				 "sounds/clip5Dwight.mp3",
+				 "sounds/clip6Angela.mp3" ]
+
+
+
+
+var picList = [ "images/slideshow/slide1Jim.jpg", 
+                "images/slideshow/slide2Pam.jpg",
+				"images/slideshow/slide3Michael.jpg",
+				"images/slideshow/slide4Creed.jpg",
+				"images/slideshow/slide5Dwight.jpg",
+				"images/slideshow/slide6Angela.jpg" ]
+
+var counter = 0;
+var timer; 
+var autoStart = false;
+
+function next()
+{
+	//alert("hello");
+
+	document.getElementById("display").src = picList[counter];
+	
+	
+	document.getElementById("player").src = clipList[counter];
+	
+	// Turn the turntable on
+	document.getElementById("player").play();
+	
+	increment();
+
+	
+}
+
+/*
+
+function run()
+{
+	if( autoStart == false ) // player isn't running
+	{
+		autoStart = true;
+		document.getElementById("runButton").value  = "Pause"
+	}
+	else // plaer IS running
+	{
+		autoStart = false;
+		document.getElementById("runButton").value  = "Run Slideshow"
+	}
+	
+	autoRun();
+}
+
+
+function autoRun()
+{
+	if ( autoStart == true )// runs the slideshow automatically
+	{
+		next();
+					
+		timer = setTimeout("autoRun()", 5000);
+	}
+	else // Stops the automatic display of the slideshow
+	{
+		clearTimeout(timer);
+	}
+	
+}
+
+function increment()
+{
+	if (counter == picList.length -1)
+		counter = 0;
+	else 
+		counter++;
+	
+}
+*/
+
+</script> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<center>
+<h1> My Awesome Slideshow </h1> 
+
+Click here to <a href="index.html">return to my home page.</a>
+
+<br/> <br/> 
+<input type = "button" value="Next Picture" onclick="next()"/>
+<input type = "button" value="Run Slideshow" onclick="run()" id="runButton"/>
+
+<br/><br/>
+
+<img src="images/slideshow/slide1Jim.jpg" id="display"/>
+
+<audio id = "player"></audio>
+
+</center>
+
+</body>
+</html>
