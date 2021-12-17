@@ -1,0 +1,82 @@
+import java.util.Scanner;
+
+public class Period7
+{
+    public static void main(String[] args)
+    {
+
+        String[] students = { "Kai Abraham", "Milli Aldi", "Brooklyn Fernandez", "Ava Ghio", 
+                "Chase Gilman", "Ben Martinez", "Landon Noble", "Bella Ortega", 
+                "Loken Wallis", "Rocky Carr", "Daniel Carrillo", "Jon Jon Kobayashi",
+                "Chiara Kvitek", "Josa Rigney", "Ethan Robertson", "Ben Tucker", 
+                "Robert Ward", "Roslyn Hamilton", "Jacob Heiser", "Ryan Hendrick", 
+                "Anna Hight", "McCartney Hong", "Aria Moya", 
+                "John Phillips Sullivan", "Greg Prehn", "Zane Stiebel", "Kevin Zarazua", "DJ Meheen", 
+                "Bryce Rambach","Sadit Lopez-Arvizu"};//, "Nuvia Lopez-Arvizu"};
+
+        String[] group = new String[students.length];
+
+        boolean[] picked = new boolean[students.length];
+        Scanner scan = new Scanner(System.in);
+        Scanner scan2 = new Scanner(System.in);
+
+        System.out.print("Enter the size of the groups: ");
+        System.out.println("\t"+students.length);
+        
+        int size = scan.nextInt();
+        int overage = students.length%size;
+        boolean max = true; 
+        if(overage != 0)
+        {
+             System.out.println("Max or min? Type 0 for min 1 for max.");
+             if(scan.nextInt()==1)
+                 max = true;
+             else 
+                 max = false;
+        }
+       
+        int randNum = -1;
+        for(int i = 0; i<students.length; i++)
+        {
+            do
+            randNum = (int)(Math.random()*students.length);
+            while(picked[randNum] == true);
+
+            picked[randNum] = true;
+            group[i] = students[randNum];
+
+        }
+
+        System.out.println("**************************************\n\n");
+        int groupNum = 1;
+        int studIndex = 0;
+        for(int i = 0; i < students.length/size; i++)
+        {
+            System.out.println("Group "+(groupNum)+ ":");
+            for(studIndex=studIndex; studIndex<i*size+size;studIndex++)
+            {
+                System.out.println(group[studIndex]);
+            }
+            if( max == false && overage>0)
+            {
+                System.out.println(group[studIndex]);
+                studIndex++;
+                overage--;
+            }
+                
+            groupNum++;
+            System.out.println();
+        }
+        if(studIndex<group.length)
+        {
+            System.out.println("Group "+(groupNum)+ ":");
+            for(int i = studIndex; i<group.length;i++)
+            {
+                System.out.println(group[i]);
+            }
+        }
+        
+        
+    }
+}
+
